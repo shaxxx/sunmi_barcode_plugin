@@ -1,3 +1,3 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+- Supported all methods from SDK

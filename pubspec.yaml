@@ -1,8 +1,7 @@
 name: sunmi_barcode_plugin
-description: A new flutter plugin project.
+description: Flutter plugin that wraps Sunmi Android SDK for integrated hardware barcode scanners
 version: 0.0.1
-author:
-homepage:
+homepage: https://github.com/shaxxx/sunmi_barcode_plugin
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
