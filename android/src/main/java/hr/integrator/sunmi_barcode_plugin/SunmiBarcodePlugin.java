@@ -89,8 +89,10 @@ public class SunmiBarcodePlugin implements MethodCallHandler, StreamHandler, Flu
 
   @Override
   public void onCancel(Object arguments) {
-    applicationContext.unregisterReceiver(scannerServiceReceiver);
-    scannerServiceReceiver = null;
+    if (scannerServiceReceiver != null){
+      applicationContext.unregisterReceiver(scannerServiceReceiver);
+      scannerServiceReceiver = null;
+    }
   }
 
   private BroadcastReceiver createScannerServiceReceiver(final EventSink events) {
