@@ -15,11 +15,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _modelVersion = 'Unknown';
+  var sunmiBarcodePlugin = SunmiBarcodePlugin();
 
   @override
   void initState() {
     super.initState();
     initPlatformState();
+    sunmiBarcodePlugin.onBarcodeScanned().listen((event) => print(event));
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -27,7 +29,7 @@ class _MyAppState extends State<MyApp> {
     String modelVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      modelVersion = (await SunmiBarcodePlugin().getScannerModel()).toString();
+      modelVersion = (await sunmiBarcodePlugin.getScannerModel()).toString();
     } on PlatformException {
       modelVersion = 'Failed to get model version.';
     }
