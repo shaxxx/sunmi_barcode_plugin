@@ -43,26 +43,26 @@ class SunmiBarcodePlugin {
   /// 105 → L2-HoneyWell(N6603)
   /// 106 → L2-Zabra(SE4750)
   /// 107 → L2-Zabra(EM1350)
-  Future<int> getScannerModel() async {
+  Future<int?> getScannerModel() async {
     return (await _channel.invokeMethod('getScannerModel')).toInt();
   }
 
   /// Calls `getScannerModel` and returns true if it's greater than 100
-  Future<bool> isScannerAvailable() async {
+  Future<bool?> isScannerAvailable() async {
     var model = (await _channel.invokeMethod('getScannerModel')).toInt();
     print(model);
     return (model > 100);
   }
 
-  Stream<String> _onBarcodeScanned;
+  Stream<String?>? _onBarcodeScanned;
 
   /// Subscribe to this stream to receive barcode as string when it's scanned.
   /// Make sure to cancel subscription when you're done.
-  Stream<String> onBarcodeScanned() {
+  Stream<String?>? onBarcodeScanned() {
     if (_onBarcodeScanned == null) {
       _onBarcodeScanned = _eventChannel
           .receiveBroadcastStream()
-          .map((dynamic event) => event as String);
+          .map((dynamic event) => event as String?);
     }
     return _onBarcodeScanned;
   }
