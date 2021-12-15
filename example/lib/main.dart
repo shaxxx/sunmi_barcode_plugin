@@ -21,7 +21,9 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     initPlatformState();
-    sunmiBarcodePlugin.onBarcodeScanned().listen((event) => print(event));
+    sunmiBarcodePlugin.onBarcodeScanned().listen((event) {
+      print(event);
+    });
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -48,6 +50,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            if (await sunmiBarcodePlugin.isScannerAvailable()) {
+              sunmiBarcodePlugin.scan();
+            }
+          },
+          child: Icon(Icons.scanner),
+        ),
         appBar: AppBar(
           title: const Text('Sunmi Barcode Plugin'),
         ),
