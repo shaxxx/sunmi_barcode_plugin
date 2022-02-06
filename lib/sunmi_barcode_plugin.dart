@@ -54,15 +54,15 @@ class SunmiBarcodePlugin {
     return (model > 100);
   }
 
-  Stream<String> _onBarcodeScanned;
+  Stream<String?>? _onBarcodeScanned;
 
   /// Subscribe to this stream to receive barcode as string when it's scanned.
   /// Make sure to cancel subscription when you're done.
-  Stream<String> onBarcodeScanned() {
+  Stream<String?>? onBarcodeScanned() {
     if (_onBarcodeScanned == null) {
       _onBarcodeScanned = _eventChannel
           .receiveBroadcastStream()
-          .map((dynamic event) => event as String);
+          .map((dynamic event) => event as String?);
     }
     return _onBarcodeScanned;
   }
