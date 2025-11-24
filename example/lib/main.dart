@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:sunmi_barcode_plugin/sunmi_barcode_plugin.dart';
+import 'package:sunmi_barcode_plugin/sunmi_barcode_plugin_method_channel.dart';
 
 void main() {
   runApp(MyApp());
@@ -48,12 +48,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Sunmi Barcode Plugin'),
-        ),
-        body: Center(
-          child: Text('Scanner model: $_modelVersion\n'),
-        ),
+        appBar: AppBar(title: const Text('Sunmi Barcode Plugin')),
+        body: Center(child: Text('Scanner model: $_modelVersion\n')),
       ),
     );
   }

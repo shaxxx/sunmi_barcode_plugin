@@ -24,14 +24,7 @@ public class SunmiBarcodePlugin implements MethodCallHandler, StreamHandler, Flu
   private BroadcastReceiver scannerServiceReceiver;
   private MethodChannel methodChannel;
   private EventChannel eventChannel;
-
-  /** Plugin registration. */
-  @SuppressWarnings("deprecation")
-  public static void registerWith(io.flutter.plugin.common.PluginRegistry.Registrar registrar) {
-    final SunmiBarcodePlugin instance = new SunmiBarcodePlugin();
-    instance.onAttachedToEngine(registrar.context(), registrar.messenger());
-    ScannerServiceConnection.getInstance().connectScannerService(registrar.context());
-  }
+  private final String BARCODE_SCANNED_ACTION = "com.sunmi.scanner.ACTION_DATA_CODE_RECEIVED";
 
   @Override
   public void onAttachedToEngine(FlutterPluginBinding binding) {
@@ -74,6 +67,11 @@ public class SunmiBarcodePlugin implements MethodCallHandler, StreamHandler, Flu
       int code = call.argument("code");
       ScannerServiceConnection.getInstance().sendKeyEvent(new KeyEvent(action,code));
       result.success(null);
+    } else if (call.method.equals("testBarcode")) {
+      Intent intent = new Intent(BARCODE_SCANNED_ACTION);
+      intent.putExtra("data", "1111111111110");
+      applicationContext.sendBroadcast(intent);
+      result.success(null);
     }
     else {
       result.notImplemented();
@@ -83,8 +81,13 @@ public class SunmiBarcodePlugin implements MethodCallHandler, StreamHandler, Flu
   @Override
   public void onListen(Object arguments, EventSink events) {
     scannerServiceReceiver = createScannerServiceReceiver(events);
-    applicationContext.registerReceiver(
-            scannerServiceReceiver, new IntentFilter("com.sunmi.scanner.ACTION_DATA_CODE_RECEIVED"));
+     IntentFilter filter = new IntentFilter();
+    filter.addAction(BARCODE_SCANNED_ACTION);
+     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+      applicationContext.registerReceiver(scannerServiceReceiver, filter, Context.RECEIVER_EXPORTED);
+    } else {
+      applicationContext.registerReceiver(scannerServiceReceiver, filter);
+    }
   }
 
   @Override
