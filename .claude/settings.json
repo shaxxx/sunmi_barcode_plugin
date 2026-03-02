@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(adb shell dumpsys package com.sunmi.scanner)",
+      "Bash(adb shell \"dumpsys activity services com.sunmi.scanner\")",
+      "Bash(adb shell \"dumpsys package com.sunmi.scanner | grep -A5 ''Service Resolver''\")",
+      "Bash(adb shell \"pm list packages --user 0 | grep sunmi\")",
+      "Bash(adb shell \"cmd package list packages -3\")",
+      "Bash(adb shell am start -n hr.integrator.sunmi_barcode_plugin_example/.MainActivity)",
+      "Bash(adb logcat -c)",
+      "Bash(adb shell input text \"test\")",
+      "Bash(adb logcat -d -t 50)"
+    ]
+  }
+}

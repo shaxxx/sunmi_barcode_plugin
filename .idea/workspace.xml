@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7e6f47f-390f-489a-8cb0-602ef6d633d9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/hr/integrator/sunmi_barcode_plugin/ScannerServiceConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/hr/integrator/sunmi_barcode_plugin/ScannerServiceConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/hr/integrator/sunmi_barcode_plugin/SunmiBarcodePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/hr/integrator/sunmi_barcode_plugin/SunmiBarcodePlugin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

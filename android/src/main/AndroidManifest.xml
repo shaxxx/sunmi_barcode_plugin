@@ -1,3 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="hr.integrator.sunmi_barcode_plugin">
+
+  <!-- Required for Android 11+ (API 30+) package visibility -->
+  <!-- See: https://developer.android.com/training/package-visibility -->
+  <queries>
+    <!-- Allow binding to Sunmi scanner service -->
+    <package android:name="com.sunmi.scanner" />
+    <intent>
+      <action android:name="com.sunmi.scanner.IScanInterface" />
+    </intent>
+    <intent>
+      <action android:name="com.sunmi.scanner.IScanManagerInterface" />
+    </intent>
+  </queries>
 </manifest>
