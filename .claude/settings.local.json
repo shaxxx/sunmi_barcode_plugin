@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(adb logcat -c)",
+      "Bash(adb logcat -s BarcodeServiceConnection:D SunmiBarcodePlugin:D *:E)",
+      "Bash(adb shell \"pm list packages | grep -i ''sunmi\\\\|scanner''\")",
+      "Bash(adb shell pm list packages)",
+      "Bash(adb shell \"pm dump com.sunmi.scanner | grep -A2 ''exported=''\")",
+      "Bash(adb shell \"dumpsys package com.sunmi.scanner | grep -B2 -A10 ''ServiceInfo''\")",
+      "Bash(adb shell \"dumpsys package com.sunmi.scanner\")",
+      "Bash(adb shell \"pm list features | grep -i scanner\")",
+      "Bash(adb logcat -d)",
+      "Bash(adb logcat -s BarcodeServiceConnection:D SunmiBarcodePlugin:D ZebraScanner:D flutter:V)"
+    ]
+  }
+}
